@@ -1,10 +1,10 @@
 <?php
 
-namespace Aacotroneo\Saml2;
+namespace Futurefuel\Saml2;
 
 use OneLogin\Saml2\Auth as OneLogin_Saml2_Auth;
 use OneLogin\Saml2\Error as OneLogin_Saml2_Error;
-use Aacotroneo\Saml2\Events\Saml2LogoutEvent;
+use Futurefuel\Saml2\Events\Saml2LogoutEvent;
 
 use Log;
 use Psr\Log\InvalidArgumentException;

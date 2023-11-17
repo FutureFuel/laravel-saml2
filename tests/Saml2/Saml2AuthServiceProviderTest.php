@@ -1,6 +1,6 @@
 <?php
 
-namespace Aacotroneo\Saml2;
+namespace Futurefuel\Saml2;
 
 
 use App;

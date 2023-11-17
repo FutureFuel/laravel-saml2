@@ -1,13 +1,13 @@
 <?php
 
-namespace Aacotroneo\Saml2;
+namespace Futurefuel\Saml2;
 
 use OneLogin\Saml2\Auth as OneLogin_Saml2_Auth;
 
 /**
  * A simple class that represents the user that 'came' inside the saml2 assertion
  * Class Saml2User
- * @package Aacotroneo\Saml2
+ * @package Futurefuel\Saml2
  */
 class Saml2User
 {

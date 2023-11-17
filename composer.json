@@ -1,18 +1,13 @@
 {
-    "name": "aacotroneo/laravel-saml2",
+    "name": "futurefuel/laravel-saml2",
     "description": "A Laravel package for Saml2 integration as a SP (service provider) for multiple IdPs, based on OneLogin toolkit which is much more lightweight than simplesamlphp.",
     "keywords": ["laravel","saml", "saml2", "onelogin"],
-    "homepage": "https://github.com/aacotroneo/laravel-saml2",
+    "homepage": "https://github.com/futurefuel/laravel-saml2",
     "license": "MIT",
-    "version": "2.1.0",
+    "version": "1.0.0",
     "authors": [
         {
-            "name": "aacotroneo",
-            "email": "aacotroneo@gmail.com"
-        },
-        {
-            "name": "Niraj Patkar",
-            "email": "niraj@alphonso.in"
+            "name": "futurefuel"
         }
     ],
     "require": {
@@ -27,13 +22,13 @@
     },
     "autoload": {
         "psr-0": {
-            "Aacotroneo\\Saml2\\": "src/"
+            "futurefuel\\Saml2\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Aacotroneo\\Saml2\\Saml2ServiceProvider"
+                "futurefuel\\Saml2\\Saml2ServiceProvider"
             ]
         }
     },
