@@ -22,13 +22,13 @@
     },
     "autoload": {
         "psr-0": {
-            "futurefuel\\Saml2\\": "src/"
+            "Futurefuel\\Saml2\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "futurefuel\\Saml2\\Saml2ServiceProvider"
+                "Futurefuel\\Saml2\\Saml2ServiceProvider"
             ]
         }
     },
