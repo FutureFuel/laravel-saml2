@@ -210,7 +210,7 @@ class Saml2Auth
             // Check if fields exist and are not empty
             if (!empty($spData['fields'])) {
                 $attributeServiceXml .= '<md:AttributeConsumingService index="1">';
-                $attributeServiceXml .= '<md:ServiceName xml:lang="en">My Service Provider</md:ServiceName>';
+                $attributeServiceXml .= '<md:ServiceName xml:lang="en">ACS</md:ServiceName>';
 
                 foreach ($spData['fields'] as $name => $details) {
                     $required = isset($details['required']) && $details['required'] ? 'true' : 'false';
