@@ -213,7 +213,7 @@ class Saml2Auth
                 $attributeServiceXml .= '<md:ServiceName xml:lang="en">ACS</md:ServiceName>';
 
                 foreach ($spData['fields'] as $name => $details) {
-                    $required = isset($details['required']) && $details['required'] ? 'true' : 'false';
+                    $required = empty($details['required']) ? 'false' : 'true';
                     $friendlyName = isset($details['friendlyName']) ? $details['friendlyName'] : $name;
 
                     $attributeServiceXml .= sprintf(
