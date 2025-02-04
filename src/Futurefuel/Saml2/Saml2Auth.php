@@ -207,12 +207,12 @@ class Saml2Auth
             $spData = $settings->getSPData();
             $attributeServiceXml = '';
 
-            // Check if acs_fields exist and are not empty
+            // Check if fields exist and are not empty
             if (!empty($spData['fields'])) {
                 $attributeServiceXml .= '<md:AttributeConsumingService index="1">';
                 $attributeServiceXml .= '<md:ServiceName xml:lang="en">My Service Provider</md:ServiceName>';
 
-                foreach ($spData['acs_fields'] as $name => $details) {
+                foreach ($spData['fields'] as $name => $details) {
                     $required = isset($details['required']) && $details['required'] ? 'true' : 'false';
                     $friendlyName = isset($details['friendlyName']) ? $details['friendlyName'] : $name;
 
@@ -227,7 +227,7 @@ class Saml2Auth
                 $attributeServiceXml .= '</md:AttributeConsumingService>';
             }
 
-            // Inject the AttributeConsumingService into the metadata if acs_fields exist
+            // Inject the AttributeConsumingService into the metadata if fields exist
             if (!empty($attributeServiceXml)) {
                 $metadata = str_replace('</md:SPSSODescriptor>', $attributeServiceXml . '</md:SPSSODescriptor>', $metadata);
             }
