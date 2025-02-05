@@ -204,10 +204,36 @@ class Saml2Auth
         $errors = $settings->validateMetadata($metadata);
 
         if (empty($errors)) {
+            $spData = $settings->getSPData();
+            $attributeServiceXml = '';
+
+            // Check if fields exist and are not empty
+            if (!empty($spData['fields'])) {
+                $attributeServiceXml .= '<md:AttributeConsumingService index="1">';
+                $attributeServiceXml .= '<md:ServiceName xml:lang="en">ACS</md:ServiceName>';
+
+                foreach ($spData['fields'] as $name => $details) {
+                    $required = empty($details['required']) ? 'false' : 'true';
+                    $friendlyName = isset($details['friendlyName']) ? $details['friendlyName'] : $name;
+
+                    $attributeServiceXml .= sprintf(
+                        '<md:RequestedAttribute Name="%s" FriendlyName="%s" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri" isRequired="%s"/>',
+                        htmlspecialchars($name, ENT_XML1, 'UTF-8'),
+                        htmlspecialchars($friendlyName, ENT_XML1, 'UTF-8'),
+                        $required
+                    );
+                }
+
+                $attributeServiceXml .= '</md:AttributeConsumingService>';
+            }
+
+            // Inject the AttributeConsumingService into the metadata if fields exist
+            if (!empty($attributeServiceXml)) {
+                $metadata = str_replace('</md:SPSSODescriptor>', $attributeServiceXml . '</md:SPSSODescriptor>', $metadata);
+            }
 
             return $metadata;
         } else {
-
             throw new InvalidArgumentException(
                 'Invalid SP metadata: ' . implode(', ', $errors),
                 OneLogin_Saml2_Error::METADATA_SP_INVALID
